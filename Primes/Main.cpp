@@ -3,8 +3,6 @@
 
 using namespace std;
 
-bool is_small_prime(int);
-
 int main()
 {
 	int temp_num = 2, check_num = 0, number_of_primes = 0, amount_to_find;
@@ -18,47 +16,28 @@ int main()
 
 	while (number_of_primes < amount_to_find)
 	{
-		//prime = is_small_prime(temp_num);
 
 		check_num = 0;
 		bool prime = true;
 
-		while (prime == true && primes_found[check_num] < temp_num)
+		while (prime == true && primes_found[check_num] < ((temp_num + 1)))
 		{
 			if (primes_found[check_num] == 0)
 			{
 				primes_found[check_num] = temp_num;
+				break;
 			}
 			else if (temp_num % primes_found[check_num] == 0)
 			{
 				prime = false;
-				cout << temp_num;
 			}
 
 			check_num++;
 		}
-		/*while (prime == true && check_num < ((temp_num + 1) / 2));
-		{
-			if (primes_found[check_num] == 0)
-			{
-				cout << "test before";
-				primes_found[check_num] = temp_num;
-				prime = true;
-				cout << "test after";
-			}
-
-			if (temp_num % primes_found[check_num] == 0 && temp_num != primes_found[check_num])
-			{
-				prime = false;
-			}
-
-			cout << check_num;
-			check_num++;
-		} */
 
 		if (prime == true)
 		{
-			cout << temp_num << "\t" << number_of_primes << endl;
+			cout << temp_num << "\t" << number_of_primes + 1 << endl;
 			number_of_primes++;
 		}
 
@@ -74,19 +53,4 @@ int main()
 	system("pause");
 
 	return(0);
-}
-
-bool is_small_prime(int temp_num)
-{
-	int check_num;
-
-	for (check_num = 2; check_num < ((temp_num + 1) / 2); check_num++)
-	{
-		if (temp_num % check_num == 0)
-		{
-			return false;
-		}
-	}
-
-	return true;
 }
